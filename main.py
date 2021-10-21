@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
 import smtplib
+from time import sleep
 
 # Enter your location to check if ISS is near you
 my_latitude = 51.971748
@@ -47,12 +48,14 @@ def is_nighttime():
     return False
 
 
-if is_ISS_close() and is_nighttime():
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(user="matimis58@gmail.com", password="M.a.s.m1")
-        connection.sendmail(
-            from_addr="matimis58@gmail.com",
-            to_addrs=email_to_get_info,
-            msg="Subject: ISS is close to you!\n\nYou should look for it in the sky!",
-        )
+while True:
+    if is_ISS_close() and is_nighttime():
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user="matimis58@gmail.com", password="M.a.s.m1")
+            connection.sendmail(
+                from_addr="matimis58@gmail.com",
+                to_addrs=email_to_get_info,
+                msg="Subject: ISS is close to you!\n\nYou should look for it in the sky!",
+            )
+    sleep(60)
