@@ -4,12 +4,12 @@ import smtplib
 from time import sleep
 
 # Enter your location to check if ISS is near you
-my_latitude = 51.971748
-my_longitude = 16.378634
+my_latitude = 
+my_longitude = 
 my_location = {"lat": my_latitude, "lng": my_longitude}
 
 # Enter an email to get info on it
-email_to_get_info = "m.a.s.m@wp.pl"
+email_to_get_info = ""
 
 
 # Function return True if ISS location from API is +/- 5 units away from data in "my_location" variable
